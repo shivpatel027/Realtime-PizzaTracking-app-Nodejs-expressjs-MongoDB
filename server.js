@@ -8,14 +8,14 @@ const expressLayout = require('express-ejs-layouts');
 
 app.use(express.static('public'))
 
-app.get('/', function(req, res) {
-    res.render("home")
-})
-
 //set Templets
 app.use(expressLayout)
 app.set('views', path.join(__dirname + '/resources/views'))
 app.set('view engine', 'ejs')
+
+//routs
+require('./routes/web')(app);
+
 
 app.listen(3000, function(req, res) {
     console.log("Server is runnig on port 3000");
